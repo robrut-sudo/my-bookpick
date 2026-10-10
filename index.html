@@ -85,101 +85,107 @@
     <!-- ================= CONTENT ================= -->
     <main>
 
-        <!-- ================= หนังสือแนะนำ ================= -->
-        <section id="recommend" class="book-intro py-5">
+       
+<!-- ================= หนังสือแนะนำ ================= -->
+<section id="recommend" class="book-intro py-5">
 
-            <div class="container py-5">
+    <div class="container py-5">
 
-                <div class="row align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-center">
 
-                    <!-- ฝั่งซ้าย -->
-                    <div class="col-lg-6">
+            <!-- ฝั่งซ้าย: ข้อความแนะนำหนังสือ -->
+            <div class="col-lg-6">
 
-                        <div class="book-text">
+                <div class="book-text">
 
-                            <p class="book-label">
-                                BOOK RECOMMENDATION
-                            </p>
+                    <p class="book-label">
+                        BOOK RECOMMENDATION
+                    </p>
 
-                            <h1 class="book-title athiti-regular ">
-                                กาลครั้งหนึ่ง .. ถึง
-                                <br>
-                                <span>เธอ</span>
-                            </h1>
+                    <h1 class="book-title athiti-regular">
+                        กาลครั้งหนึ่ง .. ถึง
+                        <br>
+                        <span>เธอ</span>
+                    </h1>
 
-                            <div class="book-line"></div>
+                    <div class="book-line"></div>
 
-                            <p class="book-description sarabun-regular">
-                                เล่มนี้จะทำให้คุณคิดถึงอะไรสักอย่าง
-                                ความรัก ความรู้สึก
-                                หรือจะเป็นใครบางคน..ก็ตาม
-                            </p>
+                    <p class="book-description sarabun-regular">
+                        เล่มนี้จะทำให้คุณคิดถึงอะไรสักอย่าง
+                        ความรัก ความรู้สึก
+                        หรือจะเป็นใครบางคน..ก็ตาม
+                    </p>
 
-                            <a href="#story" class="btn book-btn sarabun-regular">
-                                อ่านเรื่องราว ↓
-                            </a>
+                    <a href="#story" class="btn book-btn sarabun-regular">
+                        อ่านเรื่องราว ↓
+                    </a>
 
-                        </div>
-
-                    </div>
-
-                    <div class="book-flip" id="bookFlip">
-
-                        <div class="book-flip-inner">
-
-                            <!-- ด้านหน้า -->
-                            <div class="book-face book-front">
-
-                                <img src="image/ภาพปก.png" alt="ภาพปกหนังสือ" class="book-cover">
-
-                                <button class="flip-btn flip-to-back" type="button"
-                                    onclick="document.getElementById('bookFlip').classList.add('flipped')">
-
-                                    <i class="bi bi-arrow-repeat"></i>
-                                    พลิกไปด้านหลัง
-
-                                </button>
-
-                            </div>
-
-
-                            <!-- ด้านหลัง -->
-                            <div class="book-face book-back">
-
-                                <img src="image/ภาพปกหลัง.webp" alt="ภาพปกด้านหลัง" class="book-back-cover">
-
-                                <button class="flip-btn flip-to-front" type="button"
-                                    onclick="document.getElementById('bookFlip').classList.remove('flipped')">
-
-                                    <i class="bi bi-arrow-repeat"></i>
-                                    พลิกไปด้านหน้า
-
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
                 </div>
 
             </div>
-            </div>
+
+            <!-- ฝั่งขวา: หนังสือพลิกหน้า -->
+            <div class="col-lg-6 d-flex justify-content-center">
+
+                <div class="book-flip" id="bookFlip">
+
+                    <div class="book-flip-inner">
+
+                        <!-- ด้านหน้า -->
+                        <div class="book-face book-front">
+
+                            <img
+                                src="image/ภาพปก.png"
+                                alt="ภาพปกหนังสือ"
+                                class="book-cover"
+                            >
+
+                            <button
+                                class="flip-btn flip-to-back"
+                                type="button"
+                                onclick="document.getElementById('bookFlip').classList.add('flipped')"
+                            >
+                                <i class="bi bi-arrow-repeat"></i>
+                                พลิกไปด้านหลัง
+                            </button>
+
+                        </div>
+
+                        <!-- ด้านหลัง -->
+                        <div class="book-face book-back">
+
+                            <img
+                                src="image/ภาพปกหลัง.webp"
+                                alt="ภาพปกด้านหลัง"
+                                class="book-back-cover"
+                            >
+
+                            <button
+                                class="flip-btn flip-to-front"
+                                type="button"
+                                onclick="document.getElementById('bookFlip').classList.remove('flipped')"
+                            >
+                                <i class="bi bi-arrow-repeat"></i>
+                                พลิกไปด้านหน้า
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
+            <!-- จบฝั่งขวา -->
 
-            </div>
+        </div>
+        <!-- จบ row -->
 
-            </div>
+    </div>
+    <!-- จบ container -->
 
-            </div>
-
-            </div>
-
-            </div>
-
-
-        </section>
+</section>
+<!-- ================= จบหนังสือแนะนำ ================= -->
 
         <!-- ================= เนื้อเรื่องย่อ ================= -->
         <section id="summary" class="summary-section py-5">
