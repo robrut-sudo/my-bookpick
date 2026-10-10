@@ -117,6 +117,308 @@
 
 }
 
+/* =========================================
+   BOOK FLIP
+========================================= */
+
+.book-flip {
+    position: relative;
+
+    width: 360px;
+    max-width: 100%;
+
+    aspect-ratio: 360 / 475;
+
+    margin: 0 auto;
+
+    /* เพิ่มความลึกของการพลิก */
+    perspective: 1500px;
+}
+
+
+/* =========================================
+   ตัวที่หมุน
+========================================= */
+
+.book-flip-inner {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    transform-style: preserve-3d;
+
+    transition:
+        transform 0.8s cubic-bezier(.4, .2, .2, 1);
+}
+
+
+/* =========================================
+   ตอนพลิก
+========================================= */
+
+.book-flip.flipped .book-flip-inner {
+    transform: rotateY(180deg);
+}
+
+
+/* =========================================
+   ด้านหน้า / ด้านหลัง
+========================================= */
+
+.book-face {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    border-radius: 2px;
+
+    /* สำคัญ */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    /* ไม่ใช้ z-index */
+    z-index: auto;
+
+    box-shadow:
+        0 15px 35px rgba(80, 60, 50, 0.15);
+}
+
+
+/* =========================================
+   ด้านหน้า
+========================================= */
+
+.book-front {
+    background: #fff;
+
+    transform: rotateY(0deg);
+}
+
+
+/* รูปปก */
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+
+/* =========================================
+   ปุ่มด้านหน้า
+========================================= */
+
+.book-front .flip-to-back {
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ด้านหลัง
+========================================= */
+
+.book-back {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 35px;
+
+    background: #f8e8df;
+
+    /* สำคัญมาก */
+    transform: rotateY(180deg);
+}
+
+
+/* รูปปกหลัง */
+
+.book-back-cover {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    z-index: 1;
+}
+
+
+/* =========================================
+   ปุ่มด้านหลัง
+========================================= */
+
+.book-back .flip-to-front {
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform: translateX(-50%);
+
+    z-index: 20;
+
+    white-space: nowrap;
+}
+
+
+.book-back .flip-to-front:hover {
+    transform: translateX(-50%) translateY(-2px);
+}
+
+
+/* =========================================
+   CONTENT ด้านหลัง
+   ใช้กรณีที่ยังมีข้อความอยู่
+========================================= */
+
+.book-back-content {
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    color: #806c72;
+}
+
+
+.back-icon {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 32px;
+
+    color: #d47d98;
+}
+
+
+.book-back-content h3 {
+    margin: 0 0 18px;
+
+    font-size: 23px;
+    line-height: 1.5;
+
+    color: #80616b;
+}
+
+
+.book-back-content p {
+    max-width: 260px;
+
+    margin: 0 auto 28px;
+
+    font-size: 13px;
+    line-height: 1.9;
+
+    color: #8d777d;
+}
+
+
+/* =========================================
+   ปุ่มพลิก
+========================================= */
+
+.flip-btn {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    padding: 9px 17px;
+
+    border: 1px solid rgba(180, 120, 135, 0.35);
+
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.92);
+
+    color: #a66d7e;
+
+    font-family: inherit;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 5px 15px rgba(80, 60, 50, 0.12);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.flip-btn:hover {
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(80, 60, 50, 0.16);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 991px) {
+
+    .book-flip {
+        width: 340px;
+    }
+
+}
+
+
+@media (max-width: 576px) {
+
+    .book-flip {
+        width: min(330px, 85vw);
+    }
+
+    .book-back {
+        padding: 25px;
+    }
+
+    .book-back-content h3 {
+        font-size: 20px;
+    }
+
+    .book-back-content p {
+        font-size: 12px;
+    }
+
+}
+
 /* ================= HEADER ================= */
 
 .site-header {
@@ -1378,412 +1680,419 @@
 }
 
 
-/* =========================================================
-   POPUP FOOTER
-   ========================================================= */
-
-.popup-footer {
-    padding: 20px 25px 23px;
-
-    background: #fcf8fa;
-
-    border-top: 1px solid #f0e7eb;
-}
-
-
-.popup-download-btn {
-    width: 100%;
-    height: 48px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 8px;
-
-    background: #d782a2;
-
-    color: white;
-
-    border-radius: 10px;
-
-    text-decoration: none;
-
-    font-size: 14px;
-    font-weight: 500;
-
-    transition: 0.3s ease;
-}
-
-
-.popup-download-btn:hover {
-    background: #c96f91;
-
-    color: white;
-
-    transform: translateY(-2px);
-}
-
-
-.popup-footer-text {
-    margin: 10px 0 0;
-
-    text-align: center;
-
-    color: #a1969a;
-
-    font-size: 11px;
-}
-
-
-.popup-footer-text i {
-    color: #79ad8a;
-}
-
 
 /* =========================================================
-   ANIMATION
+   BOOK FOOTER
    ========================================================= */
 
-@keyframes popupFade {
-
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-
-}
-
-
-@keyframes popupUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px) scale(0.97);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-}
-
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 768px) {
-
-    .book-download {
-        padding: 55px 15px;
-    }
-
-    .book-download-card {
-        min-height: 300px;
-    }
-
-    .download-heading {
-        font-size: 24px;
-    }
-
-    .download-description {
-        font-size: 13px;
-    }
-
-    .book-download-popup {
-        max-width: 95%;
-    }
-
-}
-
-
-@media (max-width: 500px) {
-
-    .download-inner {
-        padding: 35px 18px;
-    }
-
-    .download-heading {
-        font-size: 21px;
-    }
-
-    .pdf-download-card {
-        align-items: flex-start;
-        padding: 15px;
-    }
-
-    .pdf-file-icon {
-        width: 58px;
-        height: 72px;
-
-        margin-right: 14px;
-
-        font-size: 27px;
-    }
-
-    .pdf-file-info h4 {
-        font-size: 16px;
-    }
-
-    .pdf-file-info p {
-        font-size: 12px;
-    }
-
-    .pdf-file-meta {
-        gap: 8px;
-    }
-
-    .popup-header {
-        padding: 18px;
-    }
-
-    .popup-body {
-        padding: 18px;
-    }
-
-    .popup-footer {
-        padding: 17px 18px 20px;
-    }
-
-}
 .book-footer {
     position: relative;
-    background: #fbfbe3;
-    padding: 55px 0 25px;
-    color: #7d6f72;
+    width: 100%;
+    padding: 55px 0 28px;
+    background: #fffef0;
+    color: #806c72;
+    box-sizing: border-box;
 }
 
+.book-footer *,
+.book-footer *::before,
+.book-footer *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FOOTER CONTAINER
+   ========================================================= */
+
 .footer-container {
-    width: min(1100px, 90%);
+    width: min(1200px, calc(100% - 80px));
     margin: 0 auto;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER TOP
-========================= */
+   3 COLUMNS
+   ========================================================= */
 
 .footer-top {
     display: grid;
-    grid-template-columns: 1.4fr 0.8fr 1fr;
-    gap: 60px;
+
+    /* Brand / Menu / References */
+    grid-template-columns:
+        38%
+        25%
+        37%;
+
     align-items: start;
 }
 
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.footer-brand {
+    padding-right: 55px;
+}
+
 .footer-logo {
+    margin: 0 0 18px;
+
     font-size: 25px;
+    line-height: 1;
     font-weight: 700;
-    color: #8d6b73;
-    margin-bottom: 15px;
+
+    color: #80646d;
 }
 
 .footer-logo span {
-    font-size: 22px;
+    margin-left: 4px;
+    font-size: 20px;
 }
 
 .footer-brand p {
-    max-width: 380px;
+    max-width: 390px;
+
     margin: 0;
-    line-height: 1.8;
-    font-size: 14px;
-    color: #8c8183;
+
+    font-size: 13px;
+    line-height: 1.9;
+
+    color: #806f73;
 }
 
 
-/* =========================
-   FOOTER COLUMN
-========================= */
+/* =========================================================
+   MENU COLUMN
+   ========================================================= */
 
 .footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    padding-right: 35px;
 }
 
 .footer-column h4 {
-    margin: 0 0 10px;
-    font-size: 16px;
-    color: #7c6269;
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 0 0 17px;
+
+    font-size: 14px;
+    line-height: 1.4;
+    font-weight: 600;
+
+    color: #765f67;
 }
 
 .footer-column h4 i {
-    margin-right: 6px;
-    color: #c8899d;
-}
-
-.footer-column a {
-    width: fit-content;
-    text-decoration: none;
-    color: #8c8183;
     font-size: 14px;
-    transition: 0.25s ease;
+    color: #df819d;
 }
 
-.footer-column a:hover {
-    color: #c27f96;
+.footer-column > a {
+    display: block;
+    width: fit-content;
+
+    margin-bottom: 12px;
+
+    font-size: 13px;
+    line-height: 1.4;
+
+    color: #806f73;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.footer-column > a:hover {
+    color: #d47d98;
     transform: translateX(3px);
 }
 
-.footer-book-info p {
-    margin: 0;
+
+/* =========================================================
+   BOOK INFO
+   ========================================================= */
+
+.footer-book-info {
+    padding: 0;
+    margin-top: 25px;
+}
+
+.footer-book-info h4 {
+    margin-bottom: 12px;
+    color: #d47d98;
+}
+
+.footer-book-info a {
+    display: block;
+    width: fit-content;
+
+    margin-bottom: 8px;
+
     font-size: 13px;
-    line-height: 1.7;
-    color: #8c8183;
+    color: #806f73;
+
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.footer-book-info a:hover {
+    color: #d47d98;
+}
+
+.footer-book-info p {
+    max-width: 235px;
+
+    margin: 0;
+
+    font-size: 12px;
+    line-height: 1.75;
+
+    color: #806f73;
 }
 
 
-/* =========================
+/* =========================================================
    REFERENCES
-========================= */
+   ========================================================= */
 
 .footer-references {
-    margin-top: 45px;
-    padding: 25px;
-    background: rgba(255, 255, 255, 0.55);
-    border: 1px solid rgba(201, 166, 176, 0.25);
+    width: 100%;
+
+    padding: 24px;
+
+    border: 1px solid #eee2dd;
     border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.45);
 }
+
+
+/* =========================================================
+   REFERENCE HEADING
+   ========================================================= */
 
 .reference-heading {
     display: flex;
     align-items: center;
-    gap: 12px;
+
+    gap: 11px;
+
     margin-bottom: 18px;
 }
 
 .reference-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f7dfe7;
-    color: #c27f96;
-    font-size: 19px;
+
+    border-radius: 12px;
+
+    background: #f7dce5;
+
+    color: #d17e98;
+
+    font-size: 18px;
 }
 
 .reference-heading h5 {
     margin: 0 0 3px;
-    font-size: 15px;
-    color: #765f65;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #765f67;
 }
 
 .reference-heading p {
     margin: 0;
-    font-size: 12px;
-    color: #9a8d90;
+
+    font-size: 11px;
+
+    color: #958589;
 }
 
 
-/* Reference cards */
+/* =========================================================
+   REFERENCE LIST
+   ========================================================= */
 
 .reference-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-}
 
-.reference-list a {
-    min-height: 75px;
-    display: flex;
-    align-items: center;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 12px;
-    padding: 14px 16px;
-    background: #ffffff;
-    border: 1px solid #f0e3e6;
-    border-radius: 14px;
-    text-decoration: none;
-    transition: 0.25s ease;
 }
 
-.reference-list a:hover {
-    transform: translateY(-2px);
-    border-color: #e2b9c5;
-    box-shadow: 0 6px 18px rgba(150, 110, 125, 0.08);
+
+/* =========================================================
+   REFERENCE ITEM
+   ========================================================= */
+
+.reference-list > a {
+    position: relative;
+
+    min-width: 0;
+    min-height: 145px;
+
+    padding: 17px 14px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    border: 1px solid #eadedb;
+    border-radius: 15px;
+
+    background: #ffffff;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
 }
+
+.reference-list > a:hover {
+    transform: translateY(-3px);
+
+    border-color: #e3bdc9;
+
+    box-shadow:
+        0 7px 18px rgba(120, 90, 100, 0.08);
+}
+
+
+/* =========================================================
+   REFERENCE ICON
+   ========================================================= */
 
 .reference-item-icon {
     width: 38px;
     height: 38px;
-    flex-shrink: 0;
-    border-radius: 10px;
+
+    margin-bottom: 12px;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f9e9ed;
-    color: #c47f96;
+
+    border-radius: 11px;
+
+    background: #fae7ed;
+
+    color: #d27c97;
+
+    font-size: 15px;
 }
+
+
+/* =========================================================
+   REFERENCE TEXT
+   ========================================================= */
 
 .reference-text {
     display: flex;
     flex-direction: column;
-    gap: 3px;
-    flex: 1;
+
+    gap: 4px;
+
+    padding-right: 8px;
 }
 
 .reference-text strong {
-    font-size: 13px;
-    font-weight: 600;
-    color: #765f65;
+    font-size: 12px;
+    line-height: 1.4;
+
+    color: #765f67;
 }
 
 .reference-text small {
-    font-size: 11px;
-    color: #9b8f92;
+    font-size: 10px;
+    line-height: 1.55;
+
+    color: #958589;
 }
+
+
+/* =========================================================
+   EXTERNAL LINK ICON
+   ========================================================= */
 
 .reference-arrow {
-    color: #c58a9d;
+    position: absolute;
+
+    right: 13px;
+    bottom: 14px;
+
     font-size: 13px;
+
+    color: #d27c97;
 }
 
 
-/* =========================
+/* =========================================================
    DIVIDER
-========================= */
+   ========================================================= */
 
 .footer-divider {
+    width: 100%;
+
     height: 1px;
-    background: rgba(190, 160, 168, 0.35);
-    margin: 28px 0 20px;
+
+    margin-top: 55px;
+    margin-bottom: 17px;
+
+    background: #e5d9d5;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER BOTTOM
-========================= */
+   ========================================================= */
 
 .footer-bottom {
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
+    justify-content: space-between;
+
     gap: 20px;
 }
 
 .footer-bottom p {
     margin: 0;
-    font-size: 12px;
-    color: #9b8f92;
+
+    font-size: 11px;
+    line-height: 1.7;
+
+    color: #958589;
 }
 
 .footer-made span {
-    color: #c77f96;
+    color: #d47d98;
+
+    font-size: 13px;
 }
 
 
-/* =========================
+/* =========================================================
    BACK TO TOP
-========================= */
+   ========================================================= */
 
 .footer-top-btn {
     position: absolute;
+
     right: 30px;
     bottom: 25px;
 
@@ -1795,53 +2104,188 @@
     justify-content: center;
 
     border-radius: 50%;
-    background: #f3d9e1;
-    color: #a86f82;
+
+    background: #f4dce3;
+    color: #a96e82;
 
     text-decoration: none;
-    transition: 0.25s ease;
+
+    transition: all 0.2s ease;
 }
 
 .footer-top-btn:hover {
-    background: #e8c3ce;
+    background: #eac9d3;
+
     transform: translateY(-3px);
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =========================================================
+   TABLET
+   ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
 
-    .book-footer {
-        padding-top: 40px;
+    .footer-container {
+        width: min(90%, 760px);
     }
 
     .footer-top {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr 1fr;
+
+        gap: 40px 30px;
+    }
+
+    .footer-brand {
+        padding-right: 20px;
+    }
+
+    .footer-column {
+        padding-right: 0;
+    }
+
+    .footer-references {
+        grid-column: 1 / -1;
+    }
+
+    .footer-divider {
+        margin-top: 40px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+    .book-footer {
+        padding: 42px 0 75px;
+    }
+
+    .footer-container {
+        width: calc(100% - 40px);
+    }
+
+    .footer-top {
+        display: flex;
+        flex-direction: column;
+
+        gap: 35px;
+    }
+
+    .footer-brand {
+        padding: 0;
     }
 
     .footer-brand p {
         max-width: 100%;
     }
 
+    .footer-column {
+        padding: 0;
+    }
+
+    .footer-book-info {
+        margin-top: 25px;
+    }
+
+    .footer-book-info p {
+        max-width: 100%;
+    }
+
+    .footer-references {
+        width: 100%;
+        padding: 20px;
+    }
+
     .reference-list {
         grid-template-columns: 1fr;
     }
 
+    .reference-list > a {
+        min-height: 95px;
+
+        flex-direction: row;
+        align-items: center;
+
+        padding: 15px;
+    }
+
+    .reference-item-icon {
+        flex-shrink: 0;
+
+        margin: 0 13px 0 0;
+    }
+
+    .reference-text {
+        padding-right: 25px;
+    }
+
+    .reference-arrow {
+        top: 50%;
+        right: 15px;
+        bottom: auto;
+
+        transform: translateY(-50%);
+    }
+
+    .footer-divider {
+        margin-top: 5px;
+        margin-bottom: 14px;
+    }
+
     .footer-bottom {
         flex-direction: column;
+
         align-items: flex-start;
-        gap: 8px;
+
+        gap: 7px;
     }
 
     .footer-top-btn {
-        right: 18px;
+        right: 20px;
         bottom: 20px;
     }
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .footer-container {
+        width: calc(100% - 30px);
+    }
+
+    .footer-logo {
+        font-size: 23px;
+    }
+
+    .footer-brand p {
+        font-size: 12px;
+    }
+
+    .footer-column > a {
+        font-size: 12px;
+    }
+
+    .footer-references {
+        padding: 17px;
+    }
+
+    .reference-heading h5 {
+        font-size: 12px;
+    }
+
+    .reference-heading p {
+        font-size: 10px;
+    }
+}
+
 
 .sarabun-regular {
     font-family: "Sarabun", sans-serif;

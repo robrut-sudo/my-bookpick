@@ -33,7 +33,7 @@
                 <!-- Logo -->
                 <a class="navbar-brand logo-area" href="#menu">
 
-                    <img src="image/หน้าปกนอก.webp" alt="BookPick Logo" class="logo-img">
+                    <img src="image/logo.png" alt="BookPick Logo" class="logo-img">
 
                     <span class="logo-text">
                         BookPick
@@ -123,17 +123,61 @@
 
                     </div>
 
+                    <div class="book-flip" id="bookFlip">
 
-                    <!-- ฝั่งขวา -->
-                    <div class="col-lg-5 text-center">
+                        <div class="book-flip-inner">
 
-                        <img src="image/ภาพปก.png" alt="ภาพปกหนังสือ" class="book-cover">
+                            <!-- ด้านหน้า -->
+                            <div class="book-face book-front">
+
+                                <img src="image/ภาพปก.png" alt="ภาพปกหนังสือ" class="book-cover">
+
+                                <button class="flip-btn flip-to-back" type="button"
+                                    onclick="document.getElementById('bookFlip').classList.add('flipped')">
+
+                                    <i class="bi bi-arrow-repeat"></i>
+                                    พลิกไปด้านหลัง
+
+                                </button>
+
+                            </div>
+
+
+                            <!-- ด้านหลัง -->
+                            <div class="book-face book-back">
+
+                                <img src="image/ภาพปกหลัง.webp" alt="ภาพปกด้านหลัง" class="book-back-cover">
+
+                                <button class="flip-btn flip-to-front" type="button"
+                                    onclick="document.getElementById('bookFlip').classList.remove('flipped')">
+
+                                    <i class="bi bi-arrow-repeat"></i>
+                                    พลิกไปด้านหน้า
+
+                                </button>
+
+                            </div>
+
+                        </div>
 
                     </div>
-
                 </div>
 
             </div>
+            </div>
+
+            </div>
+
+            </div>
+
+            </div>
+
+            </div>
+
+            </div>
+
+            </div>
+
 
         </section>
 
@@ -170,7 +214,7 @@
                                 STORY OF THE BOOK
                             </p>
 
-                            <h2>
+                            <h2 class="athiti-regular">
                                 เนื้อเรื่องย่อ
                             </h2>
 
@@ -217,7 +261,7 @@
 
             <div class="container py-lg-4">
 
-                <h2 class="display-6 fw-normal text-center mb-5">
+                <h2 class="display-6 fw-normal text-center mb-5 athiti-regular">
                     สิ่งที่จะได้รับกลับมา 🌷
                 </h2>
 
@@ -350,11 +394,11 @@
                 <!-- หัวข้อ -->
                 <div class="text-center mb-5">
 
-                    <p class="section-label">
+                    <p class="section-label athiti-regular">
                         REFLECTION
                     </p>
 
-                    <h2 class="display-5 fw-normal">
+                    <h2 class="display-5 fw-normal athiti-regular">
                         หนังสือทำให้เราเข้าใจอะไร? ☁️
                     </h2>
 
@@ -481,7 +525,7 @@
                         </div>
 
                         <!-- หัวข้อ -->
-                        <h2 class="download-heading">
+                        <h2 class="download-heading athiti-regular">
                             อยากทำความรู้จักหนังสือเล่มนี้มากขึ้น?
                         </h2>
 
@@ -681,33 +725,14 @@
                 </div>
 
 
-                <!-- FOOTER -->
-                <div class="popup-footer">
-
-                    <a href="หนังสือ.pdf" download class="popup-download-btn">
-
-                        <i class="bi bi-download"></i>
-
-                        <span>ดาวน์โหลด PDF</span>
-
-                    </a>
-
-                    <p class="popup-footer-text">
-
-                        <i class="bi bi-shield-check"></i>
-
-                        ดาวน์โหลดไฟล์ได้ฟรี
-
-                    </p>
-
-                </div>
+                
 
 
             </div>
 
         </div>
 
-       
+
         <footer class="book-footer">
 
             <div class="footer-container">
@@ -834,6 +859,7 @@
                 </a>
 
         </footer>
+
         <!-- Bootstrap JavaScript -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
         </script>
